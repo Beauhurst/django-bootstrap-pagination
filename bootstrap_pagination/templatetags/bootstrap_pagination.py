@@ -10,7 +10,11 @@ from django.template.loader import get_template
 from django.conf import settings
 from django.http import QueryDict
 from django.utils.html import mark_safe
-from django.utils.translation import ugettext_lazy as _
+
+if django.VERSION < (2, 0, 0):
+    from django.utils.translation import ugettext_lazy as _
+else:
+    from django.utils.translation import gettext_lazy as _
 
 
 # As of django 1.10, template rendering no longer accepts a context, but
